@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const {body, validationResult} = require('express-validator')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const jwtSecret = "MynameisEndtoEndEnryctionusingJWT$#"
 
 router.post("/createuser", [
         body('email', 'Not a valid email').isEmail(),
@@ -13,11 +16,14 @@ router.post("/createuser", [
             return res.status(400).json({errors: errors.array()})
         }
 
+        const salt = await bcrypt.genSalt(10)
+        let secPassword = await bcrypt.hash(req.body.password, salt)
+
         try {
             await User.create({
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password, 
+                password: secPassword, 
                 location: req.body.location
             })
 
@@ -45,11 +51,20 @@ router.post('/loginuser', [
                 return res.status(400).json({errors: 'Try logging with correct email id'})
             }
 
-            if(req.body.password !== userData.password){
+            const passwordCompare = bcrypt.compare(req.body.password, userData.password)
+            if(!passwordCompare){
                 return res.status(400).json({errors: 'Wrong password'})
             }
+
+            const data = {
+                user: {
+                    id: userData.id
+                }
+            }
+
+            const authToken = jwt.sign(data, jwtSecret)
             
-            return res.json({success: true})
+            return res.json({success: true, authToken: authToken})
         }
         catch(err){
             console.log(err)
