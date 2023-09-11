@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from "../components/Navbar"
 
 export default function Login() {
   const [credentials, setCredentials] = useState({
@@ -33,7 +34,7 @@ const handleSubmit = async (e) => {
     if(json.success){
       localStorage.setItem('userEmail', credentials.email)
       localStorage.setItem("authToken", json.authToken)
-      console.log(localStorage.getItem("authToken"))
+      //console.log(localStorage.getItem("authToken"))
       navigate('/')
     }
 }
@@ -45,9 +46,12 @@ const onChange = (event) => {
     })
 }
   return (
-    <div>
+    <div style={{backgroundImage: 'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', height: '100vh', backgroundSize: 'cover' }}>
+      <div>
+        <Navbar></Navbar>
+      </div>
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form className='w-50 m-auto mt-5 border bg-dark border-success rounded' onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
@@ -55,7 +59,6 @@ const onChange = (event) => {
             <input
               type="email"
               className="form-control"
-              id="exampleInputEmail1"
               aria-describedby="emailHelp"
               name="email"
               value={credentials.email}
@@ -80,7 +83,7 @@ const onChange = (event) => {
           <button type="submit" className="m-3 btn btn-success">
             Submit
           </button>
-          <Link to='/createuser' className="m-3 btn btn-danger">I'm a new user</Link>
+          <Link to='/signup' className="m-3 mx-1 btn btn-danger">New User</Link>
         </form>
       </div>
     </div>

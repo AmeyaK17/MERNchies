@@ -17,3 +17,10 @@ code {
   max-height: 500px;
 }
 
+.nav-link{
+  color: white !important;
+}
+
+.carousalImg{
+  object-fit: contain !important;
+}
