@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatchCart, useCart } from "./ContextReducer";
+import { useNavigate } from 'react-router-dom'
 
 export default function Card(props) {
+
+  let navigate = useNavigate()
 
   let dispatch = useDispatchCart()
   let data = useCart()
@@ -67,8 +70,8 @@ export default function Card(props) {
             <h5 className="card-title">{props.foodData.name}</h5>
             {/*<p className="card-text">{props.description}</p>*/}
             
-            <div className="container w-100">
-              <select className="m-2 h-100 bg-success rounded" onChange={(e) => setQty(e.target.value)}>
+            <div className="container w-100 p-0" style={{ height: "30" }}>
+              <select className="m-2 h-100 w-20 bg-success text-black rounded" style={{ select: "#FF0000" }} onChange={(e) => setQty(e.target.value)}>
                 {Array.from(Array(6), (e, i) => {
                   return (
                     <option key={i + 1} value={i + 1}>
@@ -78,13 +81,13 @@ export default function Card(props) {
                 })}
               </select>
 
-              <select className="m-2 h-100 bg-success rounded" ref={priceRef} onChange={(e) => setSize(e.target.value)}>
+              <select className="m-2 h-100 w-20 bg-success text-black rounded" style={{ select: "#FF0000" }} ref={priceRef} onChange={(e) => setSize(e.target.value)}>
                 {priceOptions.map((data) => {
                   return <option key={data} value={data}>{data}</option>
                 })}
               </select>
 
-              <div className="d-inline h-100 fs-5">$ {finalPrice}</div>
+              <div className="d-inline ms-2 h-100 w-20 fs-5">$ {finalPrice}</div>
             </div>
             <hr></hr>
             <button className={`btn btn-success justify-center ms-2`} onClick={handleAddToCart}>Add To Cart</button>

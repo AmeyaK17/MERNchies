@@ -6,12 +6,10 @@ export default function Cart() {
     let data = useCart()
     let dispatch = useDispatchCart()
 
-    console.log(data)
-
     if (data.length === 0) {
         return (
           <div>
-            <div className='m-5 w-100 text-center fs-3 style'>The Cart is Empty!</div>
+            <div className='m-5 w-100 text-center fs-3'>The Cart is Empty!</div>
           </div>
         )
     }
@@ -65,8 +63,7 @@ export default function Cart() {
                             <button type='button' className='btn p-0'>
                                 <Delete onClick={() => { dispatch({ type: "REMOVE", index: index }) }} />
                             </button>
-                        </td>
-                        
+                        </td> 
                     </tr>
                 ))}
             </tbody>

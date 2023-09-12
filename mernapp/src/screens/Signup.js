@@ -24,11 +24,14 @@ export default function Signup() {
         let latitude = res.coords.latitude;
         let longitude = res.coords.longitude;
         return [latitude, longitude]
-      })
-      // console.log(latlong)
+      }).catch(error => {
+        // Handle errors here
+        console.error("Error getting geolocation:", error);
+      });
+      //console.log(latlong)
       let [lat, long] = latlong
       console.log(lat, long)
-      const response = await fetch("http://localhost:4000/api/auth/getlocation", {
+      const response = await fetch("http://localhost:4000/api/getlocation", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -36,7 +39,7 @@ export default function Signup() {
         body: JSON.stringify({ latlong: { lat, long } })
   
       });
-      const { location } = await response.json()
+      const {location}  = await response.json()
       console.log(location);
       setAddress(location);
       setCredentials({ ...credentials, [e.target.name]: location })

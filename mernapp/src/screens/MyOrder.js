@@ -26,7 +26,7 @@ export default function MyOrder() {
     }, [])
 
   return (
-    <>
+    <div>
         <div>
             <Navbar />
         </div>
@@ -86,6 +86,6 @@ export default function MyOrder() {
         <div>
             <Footer />
         </div>
-    </>
+    </div>
   )
 }

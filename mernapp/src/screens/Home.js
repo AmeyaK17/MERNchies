@@ -36,25 +36,19 @@ export default function Home() {
           id="carouselExampleFade"
           className="carousel slide carousel-fade"
           data-bs-ride="carousel"
-          style={{ objectFit: "contain !important" }}
         >
           <div className="carousel-inner" id="carousel">
-            <div className="carousel-caption" style={{ zIndex: "10" }}>
+            <div className="carousel-caption" style={{ zIndex: "9" }}>
               <div className="d-flex justify-content-center">
                 <input
-                  className="form-control me-2"
+                  className="form-control me-2 w-75 text-white"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
-                {/* <button
-                  className="btn btn-outline-success text-white bg-success"
-                  type="submit"
-                >
-                  Search
-                </button> */}
+                <button className="btn text-white bg-danger" onClick={() => { setSearch('') }}>X</button>
               </div>
             </div>
 
@@ -109,22 +103,23 @@ export default function Home() {
           </button>
         </div>
       </div>
+      
       <div className="container">
         {foodCat !== []
           ? foodCat.map((data) => {
               return (
                 <div className="row mb-3">
-                  <div key={data._id} className="fs-3 m-3">
+                  <div key={data.id} className="fs-3 m-3">
                     {data.CategoryName}
                   </div>
-                  <hr></hr>
+                  <hr id="hr-success" style={{ height: "4px", backgroundImage: "-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))" }}></hr>
                   {foodItem !== [] ? (
                     foodItem
                       .filter((item) => (item.CategoryName === data.CategoryName) && (item.name.toLowerCase().includes(search.toLowerCase())))
                       .map((filterItems) => {
                         return (
                           <div
-                            key={filterItems._id}
+                            key={filterItems.id}
                             className="col-12 col-md-6 col-lg-3"
                           >
                             <Card
