@@ -3,5 +3,7 @@
 # Adding to Cart
 
 
-https://github.com/AmeyaK17/MERNchies/assets/47977329/1e0374c9-586f-4f84-a42f-779fb0bd9569
+
+
+https://github.com/AmeyaK17/MERNchies/assets/47977329/ffe74338-a072-427a-953f-3cf1819fa6b6
 
