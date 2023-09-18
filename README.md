@@ -37,7 +37,7 @@ A food delivery app build using the MERN Stack.
 
 ##
 
-<h3> Below is a small demo of the Application: </h3>
+<h2> Below is a small demo of the Application: </h2>
 
 # Adding to Cart
 ![AddToCart-gif-high](https://github.com/AmeyaK17/MERNchies/blob/main/ReadMeGifs/AddToCart-High.gif)
