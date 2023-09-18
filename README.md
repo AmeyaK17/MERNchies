@@ -35,8 +35,9 @@ A food delivery app build using the MERN Stack.
 - Developed a database schema and models using validators
 - Successfully established a connection between Node.js and MongoDB using MongoURI and mongoose
 
+##
 
-<h1> Below is a small demo of the Application: </h1>
+<h3> Below is a small demo of the Application: </h3>
 
 # Adding to Cart
 ![AddToCart-gif-high](https://github.com/AmeyaK17/MERNchies/blob/main/ReadMeGifs/AddToCart-High.gif)
