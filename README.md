@@ -1,6 +1,6 @@
 # MERNchies
 
-A food delivery app build using the MERN Stack.
+A food delivery app build using the MERN (MongoDB, Express.js, React.js, Node.js) Stack.
 
 ##
 
